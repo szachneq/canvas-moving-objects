@@ -7,9 +7,6 @@ var Board = function (options = {}) {
 	var canvas = options.canvas || document.getElementsByTagName('canvas')[0];
 	var ctx = canvas.getContext('2d');
 	
-	console.log(canvas.width);
-	console.log(canvas.height);
-	
 	var moveObjects = function () {
 		objects.forEach(function (object) {
 			object.move();
@@ -37,11 +34,11 @@ var Board = function (options = {}) {
 			for (var i = index + 1; i < objects.length; i++) {
 				var nextObject = objects[i];
 				if (areColliding(currentObject, nextObject)) {
-					if (currentObject.getHorizontalSpeed() == - nextObject.getHorizontalSpeed()) {
+					if (Math.sign(currentObject.getHorizontalSpeed()) !== Math.sign(nextObject.getHorizontalSpeed())) {
 						currentObject.horizontalBounce();
 						nextObject.horizontalBounce();
 					}
-					if (currentObject.getVerticalSpeed() == - nextObject.getVerticalSpeed()) {
+					if (Math.sign(currentObject.getVerticalSpeed()) !== Math.sign(nextObject.getVerticalSpeed())) {
 						currentObject.verticalBounce();
 						nextObject.verticalBounce();
 					}

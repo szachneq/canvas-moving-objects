@@ -8,8 +8,8 @@ var Ball = function (options = {}) {
 	var width = options.width || 20;
 	var height = options.height || 20;
 	var color = options.color || '#aaaaaa';
-	var verticalSpeed = 1 || options.verticalSpeed;
-	var horizontalSpeed = 1 || options.horizontalSpeed;
+	var verticalSpeed = options.verticalSpeed || 1;
+	var horizontalSpeed = options.horizontalSpeed || 1;
 	
 	self.move = function () {
 		x += horizontalSpeed;
